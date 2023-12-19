@@ -69,7 +69,202 @@ public class WritingToFiles {
         output6.close(); */
 
         // Q7 
+        /* System.out.println("please enter 15 numbers from 1 - 20:");
+        int[] nums7 = new int[15];
+
+        for (int i = 0; i < nums7.length; i++)
+        {
+            nums7[i] = scan.nextInt();
+        }
+
+        PrintWriter output7 = new PrintWriter("file7.txt");
+        int temp = 0;
+        for (int j = 1; j < nums7.length; j++)
+        {
+            for (int i = 0; i < nums7.length - j; i++)
+            {
+                if (nums7[i] > nums7[i+1])
+                {
+                    temp = nums7[i];
+                    nums7[i] = nums7[i+1];
+                    nums7[i+1] = temp;
+                }
+            }
+        }
+
+        for (int i = 0; i < nums7.length; i ++)
+        {
+            output7.println(nums7[i]);
+        }
+
+        output7.close(); */
+
+        // Q8
+        /* System.out.println("please enter 20 marks: ");
+
+        PrintWriter output8 = new PrintWriter("file8.txt");
+        boolean validMark = true;
+        for (int i = 0; i < 20; i++)
+        {
+            int mark8 = scan.nextInt();
+            if (mark8 >= 0 && mark8 <= 100)
+            {
+                validMark = true;
+                output8.println(mark8);
+            }
+            else
+            {
+                validMark = false;
+            }
+
+            while (!validMark)
+            {
+                System.out.println("unvalid; please re-enter the mark:");
+                mark8 = scan.nextInt();
+                if (mark8 >= 0 && mark8 <= 100)
+                {
+                    validMark = true;
+                    output8.println(mark8);
+                }
+            }
+        }
+        output8.close(); */
+
+        // Q9
+        /* System.out.println("please enter 20 marks: ");
+
+        PrintWriter output9 = new PrintWriter("file9.txt");
         
+        int mark9 = scan.nextInt();
+        int highestMark = mark9;
+        output9.println(mark9);
+        
+        boolean validMark9 = true;
+        for (int i = 0; i < 19; i++)
+        {
+            mark9 = scan.nextInt();
+            if (mark9 >= 0 && mark9 <= 100)
+            {
+                validMark9 = true;
+                output9.println(mark9);
+                if (mark9 > highestMark)
+                {
+                    highestMark = mark9;
+                }
+            }
+            else
+            {
+                validMark9 = false;
+            }
+
+            while (!validMark9)
+            {
+                System.out.println("unvalid; please re-enter the mark:");
+                mark9 = scan.nextInt();
+                if (mark9 >= 0 && mark9 <= 100)
+                {
+                    validMark9 = true;
+                    output9.println(mark9);
+                    if (mark9 > highestMark)
+                    {
+                        highestMark = mark9;
+                    }
+                }
+            }
+        }
+        output9.println("the highest mark: " + highestMark);
+        scan.nextLine();
+        output9.close(); */
+
+        
+
+        // Q10
+        /* boolean quit = false;
+        PrintWriter output10 = new PrintWriter("file10.txt");
+        System.out.println("enter 'quit' to quit");
+        
+        while (!quit)
+        {
+            System.out.print("please enter a username: ");
+            String username = scan.nextLine();
+
+            if (username.equalsIgnoreCase("quit"))
+            {
+                quit = true;
+            }
+
+            if (!quit)
+            {
+                System.out.print("please enter a password: ");
+                String password = scan.nextLine();
+
+                if (password.equalsIgnoreCase("quit"))
+                {
+                    quit = true;
+                }
+
+                if (password.equals("happy"))
+                {
+                    output10.println("username: " + username);
+                }
+            }
+
+            
+        }
+
+        output10.close(); */
+
+        // Q11
+        /* PrintWriter output11 = new PrintWriter("file11.txt");
+        String[] names11 = new String[5];
+
+        System.out.println("please enter 5 names");
+        for (int i = 0; i < 5; i++)
+        {
+            names11[i] = scan.nextLine();
+            output11.println(names11[i]);
+        }
+        output11.close();
+
+        // Q12
+        PrintWriter output12 = new PrintWriter("file12.txt");
+        String[] names12 = new String[5];
+
+        System.out.println("please enter 5 names");
+        for (int i = 0; i < 5; i++)
+        {
+            names12[i] = scan.nextLine();
+        }
+        
+        for (int j = 1; j < 5; j++)
+        {
+            for (int i = 0; i < 5 - j; i++)
+            {
+                if (names12[i].compareToIgnoreCase(names12[i+1]) > 0)
+                {
+                    String temp = names12[i];
+                    names12[i] = names12[i+1];
+                    names12[i+1] = temp;
+                }
+            }
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            output12.println(names12[i]);
+        }
+
+        output12.close();
+         */
+
+        
+        // Q13
+        for (int i = 0; i < 5; i++)
+        {
+            
+        }
+
+
 
 
         
