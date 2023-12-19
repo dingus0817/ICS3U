@@ -1,2 +1,2 @@
 # ICS3U
-grade 11 into to java
+grade 11 intro to java
