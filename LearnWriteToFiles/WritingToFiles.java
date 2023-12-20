@@ -6,7 +6,9 @@
 
 import java.util.Scanner;
 import java.io.PrintWriter; 
+import java.util.HashMap;
 public class WritingToFiles {
+    
     public static void main(String[] args) throws Exception { 
         Scanner scan = new Scanner(System.in);
 
@@ -259,15 +261,47 @@ public class WritingToFiles {
 
         
         // Q13
+        /* HashMap<String, Integer> scienceMarks = new HashMap<String, Integer>();
+        PrintWriter output13 = new PrintWriter("file13.txt");
         for (int i = 0; i < 5; i++)
         {
-            
+            System.out.print("student name: ");
+            String student = scan.nextLine();
+            System.out.print("mark: ");
+            int mark = scan.nextInt(); 
+            Integer Mark = Integer.valueOf(mark);
+            scan.nextLine();
+
+            scienceMarks.put(student, Mark);
         }
 
+        for (String name : scienceMarks.keySet())
+        {
+            output13.println(name + "  " + scienceMarks.get(name) + "%");
+        }
+        output13.close(); */
 
-
-
+        // Q14
         
+        System.out.print("please enter the height of the 45-45-90 triangle:" );
+        int height = scan.nextInt();
+        printTree(height);
+
+    }
+
+    // Q14
+
+    public static void printTree(int h) throws Exception{
+        PrintWriter output14 = new PrintWriter("file14.txt");
+        for (int i = 1; i <= h; i++)
+        {
+            for (int j = 1; j <= h - (h-i); j++)
+            {
+                output14.print("*");
+            }
+            output14.println("");
+        }
+        output14.close();
     }
 
 }
