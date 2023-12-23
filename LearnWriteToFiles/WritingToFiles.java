@@ -14,7 +14,7 @@ public class WritingToFiles {
 
         // Q1
         // create the file in same DIR as program
-        /* PrintWriter output1 = new PrintWriter("file1.txt");
+        PrintWriter output1 = new PrintWriter("file1.txt");
         output1.println("Jamie");
         output1.println("Zhang");
         output1.close();
@@ -53,9 +53,9 @@ public class WritingToFiles {
         String fileName = scan.nextLine();
         PrintWriter output5 = new PrintWriter(fileName + ".txt");
         output5.println("welcome to your file");
-        output5.close(); */
+        output5.close(); 
 
-       /*  // Q6
+       // Q6
         PrintWriter output6 = new PrintWriter("file6.txt");
 
         System.out.println("please enter 10 numbers: ");
@@ -68,10 +68,10 @@ public class WritingToFiles {
                 output6.println(nums6[i]);
             }
         }
-        output6.close(); */
+        output6.close(); 
 
         // Q7 
-        /* System.out.println("please enter 15 numbers from 1 - 20:");
+        System.out.println("please enter 15 numbers from 1 - 20:");
         int[] nums7 = new int[15];
 
         for (int i = 0; i < nums7.length; i++)
@@ -99,10 +99,10 @@ public class WritingToFiles {
             output7.println(nums7[i]);
         }
 
-        output7.close(); */
+        output7.close(); 
 
         // Q8
-        /* System.out.println("please enter 20 marks: ");
+        System.out.println("please enter 20 marks: ");
 
         PrintWriter output8 = new PrintWriter("file8.txt");
         boolean validMark = true;
@@ -130,10 +130,10 @@ public class WritingToFiles {
                 }
             }
         }
-        output8.close(); */
+        output8.close(); 
 
         // Q9
-        /* System.out.println("please enter 20 marks: ");
+        System.out.println("please enter 20 marks: ");
 
         PrintWriter output9 = new PrintWriter("file9.txt");
         
@@ -176,12 +176,12 @@ public class WritingToFiles {
         }
         output9.println("the highest mark: " + highestMark);
         scan.nextLine();
-        output9.close(); */
+        output9.close(); 
 
         
 
         // Q10
-        /* boolean quit = false;
+        boolean quit = false;
         PrintWriter output10 = new PrintWriter("file10.txt");
         System.out.println("enter 'quit' to quit");
         
@@ -214,10 +214,10 @@ public class WritingToFiles {
             
         }
 
-        output10.close(); */
+        output10.close();
 
         // Q11
-        /* PrintWriter output11 = new PrintWriter("file11.txt");
+        PrintWriter output11 = new PrintWriter("file11.txt");
         String[] names11 = new String[5];
 
         System.out.println("please enter 5 names");
@@ -257,11 +257,11 @@ public class WritingToFiles {
         }
 
         output12.close();
-         */
+        
 
         
         // Q13
-        /* HashMap<String, Integer> scienceMarks = new HashMap<String, Integer>();
+        HashMap<String, Integer> scienceMarks = new HashMap<String, Integer>();
         PrintWriter output13 = new PrintWriter("file13.txt");
         for (int i = 0; i < 5; i++)
         {
@@ -279,7 +279,7 @@ public class WritingToFiles {
         {
             output13.println(name + "  " + scienceMarks.get(name) + "%");
         }
-        output13.close(); */
+        output13.close(); 
 
         // Q14
         
