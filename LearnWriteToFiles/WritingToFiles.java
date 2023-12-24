@@ -244,9 +244,9 @@ public class WritingToFiles {
             {
                 if (names12[i].compareToIgnoreCase(names12[i+1]) > 0)
                 {
-                    String temp = names12[i];
+                    String temp12 = names12[i];
                     names12[i] = names12[i+1];
-                    names12[i+1] = temp;
+                    names12[i+1] = temp12;
                 }
             }
         }
@@ -286,6 +286,8 @@ public class WritingToFiles {
         System.out.print("please enter the height of the 45-45-90 triangle:" );
         int height = scan.nextInt();
         printTree(height);
+        
+        scan.close();
 
     }
 
