@@ -4,6 +4,7 @@
  * Date: December 1 2023
  */
 import java.util.Scanner;
+
 public class VoidMethodsPartA {
 
     public static void writeArea(int l, int w)
@@ -31,6 +32,8 @@ public class VoidMethodsPartA {
     public static void main(String[] args)
     {
         Scanner scan = new Scanner(System.in);
+        VoidMethodEg o = new VoidMethodEg();
+        o.drawTriangle(7);
 
         // Q1
         System.out.print("please enter the length: ");

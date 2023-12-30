@@ -1,6 +1,6 @@
 import java.util.Scanner;
 public class VoidMethodEg {
-    public static void drawTriangle(int h){
+    public void drawTriangle(int h){
         for (int i = 1; i <= h; i++)
         {
             for (int j = 1; j <= h - (h-i); j++)
