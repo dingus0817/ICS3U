@@ -5,6 +5,7 @@
     "java.project.sourcePaths": [
         ".",
         "LearnReadFiles",
-        "LearnWriteToFiles"
+        "LearnWriteToFiles",
+        "RPGcharacter"
     ]
 }
