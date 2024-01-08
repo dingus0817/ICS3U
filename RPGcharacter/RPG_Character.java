@@ -1,12 +1,12 @@
 /*
- * File name: RPGCharacter.java
+ * File name: RPG_Character.java
  * Author: Jamie Zhang
  * Date: December 29 2023
  */
 import java.io.*;
 import java.util.*;
 
-public class RPGCharacter {
+public class RPG_Character {
     static HashMap<String, Integer> characterTotal = new HashMap<String, Integer>();
     static Integer sum = 0;
     static Integer counter = Integer.valueOf(1);
@@ -324,21 +324,23 @@ public class RPGCharacter {
             }
         }
 
+        java.util.List<String> recommendedCharacters = new ArrayList<String>();
+         
         Integer maxValue = arrayForTotals[0];
-        System.out.println("\n~~ your recommended characters ...");
+        System.out.println("~~ your recommended characters ...");
 
         for (String i : characterTotal.keySet()) 
         {
             if (maxValue == (characterTotal.get(i)))
             {
                 System.out.println(i);
-                
+                recommendedCharacters.add(i);
             }
         }
 
         // end message
-        System.out.println("~~ now it's time for you to begin your adventure! ~~");
-            
+        System.out.println("\n~~ now it's time for you to begin your adventure! ~~");
+        
         input.close();
 
     }
