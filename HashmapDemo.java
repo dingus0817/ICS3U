@@ -30,6 +30,7 @@ public class HashmapDemo {
   public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);
     
+    
     // initialize charTotal
     charTotal.put("knight", 0);
     charTotal.put("ranger", 0);
