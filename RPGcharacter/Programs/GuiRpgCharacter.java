@@ -1,5 +1,8 @@
+package Programs;
+
 /*
  * File name: GuiRpgCharacter.java
+ * Description: GUI of the RPG Character Recommender 9000
  * Author: Jamie Zhang
  * Date: January 2 2024
  */
@@ -15,12 +18,12 @@ import java.awt.image.BufferedImage;
 // class extends JFrame
 public class GuiRpgCharacter extends JFrame{
 
-    // ************* Methods ~ backstage code ************** // 
+    // ************* Methods ~ back-end code ************** // 
 
     // initialization of characterTotal hashmap 
     public static void initCharacters() throws Exception
     {
-        File initTotal = new java.io.File("RPGcharacter" + File.separator + "InitCharacterTotal.txt"); // file instance
+        File initTotal = new java.io.File("RPGcharacter" + File.separator + "Assets" + File.separator + "InitCharacterTotal.txt"); // file instance
         Scanner scanInitTotal = new Scanner(initTotal);  // scanner for file
 
         // initialize character totals, which is all zero initially
@@ -147,7 +150,7 @@ public class GuiRpgCharacter extends JFrame{
     // accepts the array to be modified (passby reference) and the numbers of lines skipped inside the file as parameters
     public static String getQuestions(String[] question, int skippedLines) throws Exception
     {
-        File questionsFile = new java.io.File("RPGcharacter" + File.separator + "Questions&Options.txt"); // read the questions from file
+        File questionsFile = new java.io.File("RPGcharacter" + File.separator + "Assets" + File.separator + "Questions&Options.txt"); // read the questions from file
         Scanner scanQuestions = new Scanner(questionsFile); // create scanner for file
         boolean done = false;  // marks when the scanner should close
         String arrayToString = ""; 
@@ -187,7 +190,6 @@ public class GuiRpgCharacter extends JFrame{
     static Integer sum = 0;
     static Integer counter = Integer.valueOf(1);
     static HashMap<String, ArrayList<String>> eligibleCharacters = new HashMap<String, ArrayList<String>>();
-    static java.util.List<String> recommendedCharactersList = new ArrayList<String>();
     
     // arrays and lists to be manipulated constantly to store characters for each question
     static java.util.List<String> listForA = new ArrayList<String>();
@@ -213,13 +215,13 @@ public class GuiRpgCharacter extends JFrame{
     static String[] question7 = new String[5];
     
     // create file instances for the eligible characters per option for each question *** // 
-    static File firstQuestion = new java.io.File("RPGcharacter" + File.separator + "EligibleCharactersQ1.txt");
-    static File secondQuestion = new java.io.File("RPGcharacter" + File.separator + "EligibleCharactersQ2.txt");
-    static File thirdQuestion = new java.io.File("RPGcharacter" + File.separator + "EligibleCharactersQ3.txt");
-    static File fourthQuestion = new java.io.File("RPGcharacter" + File.separator + "EligibleCharactersQ4.txt");
-    static File fifthQuestion = new java.io.File("RPGcharacter" + File.separator + "EligibleCharactersQ5.txt");
-    static File sixthQuestion = new java.io.File("RPGcharacter" + File.separator + "EligibleCharactersQ6.txt");
-    static File seventhQuestion = new java.io.File("RPGcharacter" + File.separator + "EligibleCharactersQ7.txt"); 
+    static File firstQuestion = new java.io.File("RPGcharacter" + File.separator + "Assets" + File.separator + "EligibleCharactersQ1.txt");
+    static File secondQuestion = new java.io.File("RPGcharacter" + File.separator + "Assets" + File.separator + "EligibleCharactersQ2.txt");
+    static File thirdQuestion = new java.io.File("RPGcharacter" + File.separator + "Assets" + File.separator + "EligibleCharactersQ3.txt");
+    static File fourthQuestion = new java.io.File("RPGcharacter" + File.separator + "Assets" + File.separator + "EligibleCharactersQ4.txt");
+    static File fifthQuestion = new java.io.File("RPGcharacter" + File.separator + "Assets" + File.separator + "EligibleCharactersQ5.txt");
+    static File sixthQuestion = new java.io.File("RPGcharacter" + File.separator + "Assets" + File.separator + "EligibleCharactersQ6.txt");
+    static File seventhQuestion = new java.io.File("RPGcharacter" + File.separator + "Assets" + File.separator + "EligibleCharactersQ7.txt"); 
     
     static java.io.File[] questionFilesList = {  // stores the 'eligible characters per question' files into an array
         firstQuestion,
@@ -236,7 +238,7 @@ public class GuiRpgCharacter extends JFrame{
 
 
 
-    // **************** GUI begins ~ front stage code ***************** //
+    // **************** GUI begins ~ front-end code ***************** //
 
     // initial value of current card (current panel that is being displayed on gui) is 1
     static int currentCard = 1;
@@ -245,12 +247,12 @@ public class GuiRpgCharacter extends JFrame{
     // displays panels one at a time like cards
     CardLayout cl;
  
-    // ---------------- CONSTRUCTOR ------------------- //
+    // * ---------------- * CONSTRUCTOR * ------------------- * //
     // sets up gui
     public GuiRpgCharacter() throws Exception  
     {
         // functions to create JFrame
-        setTitle("GuiRpgCharacter");
+        setTitle("RPG Character Recommender 9000");
         setSize(800, 400);
         setResizable(false);
  
@@ -270,6 +272,7 @@ public class GuiRpgCharacter extends JFrame{
         JPanel invalidPan = new JPanel();
         JPanel resultsPan = new JPanel();
         JPanel endingPan = new JPanel();
+        endingPan.setBackground(Color.WHITE);
         
 
 
@@ -307,7 +310,7 @@ public class GuiRpgCharacter extends JFrame{
 
 
  
-        // add card panels to cardPanel
+        // ------------------------ add card panels to cardPanel
         // give each card panel a name to be referred to later
         cardPanel.add(pan1, "1"); 
         cardPanel.add(pan2, "2");
@@ -322,7 +325,7 @@ public class GuiRpgCharacter extends JFrame{
 
 
 
-        // create the button panel
+        // -------------- create the button panel
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.pink);
         JButton nextButton = new JButton("Next");
@@ -338,7 +341,9 @@ public class GuiRpgCharacter extends JFrame{
         nextButton.setText("Start!");
 
 
-        // create the panel that will display the recommended characters at the end
+
+
+        // ----------- create the panel that will display the recommended characters at the end
         JPanel recommendPan = new JPanel();
         recommendPan.setBackground(Color.PINK);
         JLabel recommendedCharactersLabel = new JLabel(""); // initialize the label; will be changed later in the program
@@ -346,23 +351,30 @@ public class GuiRpgCharacter extends JFrame{
         recommendPan.setVisible(false);
 
 
-        // ----- add image -------
-        FlowLayout fl = new FlowLayout();
-        //ImageIcon charactersImage = new ImageIcon("miraclechildren.png"); 
-        JPanel imagePan = new JPanel();
-        imagePan.setBackground(Color.BLUE);
-        imagePan.setLayout(fl);
-        
-        BufferedImage charactersImage = ImageIO.read(new File("RPGcharacter/test.png"));
-        JLabel imageLabel = new JLabel(new ImageIcon(charactersImage));
-        //imageLabel.setBounds(0,0,350,350);
-        imagePan.add(imageLabel);
-        imagePan.setVisible(false);
 
+
+
+        // ----- add image -------
+        FlowLayout fl = new FlowLayout(); // use flow layout
+        JPanel imagePan = new JPanel();  // create new panel 
+        imagePan.setBackground(Color.WHITE);
+        imagePan.setLayout(fl);  // set panel as the layout
+        
+        BufferedImage charactersImage = ImageIO.read(new File("RPGcharacter" + File.separator + "Assets" + File.separator + "charactersImage.png"));  // get image
+        JLabel imageLabel = new JLabel(new ImageIcon(charactersImage)); // create image as a label
+        imagePan.add(imageLabel);  // add image to the panel
+        imagePan.setVisible(false);  // image is not visible initially
+
+
+
+
+        // create printwriter to write recommended characters to file ~ used at the very end 
+        PrintWriter writer = new PrintWriter("RPGcharacter" + File.separator + "Assets" + File.separator + "RecommendedCharacters.txt"); // create writer object
+        
  
 
 
-        // ---------- BUTTON -------------------------
+        // * ---------- * BUTTON * ------------------------- *
         // add an ActionListener to the button 
         // code only runs when the button is pressed
         nextButton.addActionListener(new ActionListener()
@@ -377,7 +389,7 @@ public class GuiRpgCharacter extends JFrame{
                 // without it, the invalid label will appear before the user does anything
                 boolean firstPass = false; 
                 
-                // ***** run if conditions apply ****** 
+                // ******** run if conditions apply ********* 
 
                 if (currentCard <= 8) // make textfield and label only for the question panels
                 {
@@ -454,6 +466,7 @@ public class GuiRpgCharacter extends JFrame{
                 inputField.setText(""); // reset textfield after each button click
 
                 
+
                 if (currentCard == 9 || currentCard == 10) // for panels 9 and 10
                 {
                     currentCard += 1; // when button is pressed, flip to next panel
@@ -466,22 +479,25 @@ public class GuiRpgCharacter extends JFrame{
                     }
                 }
  
+
+
                 if (currentCard == 11)
                 {
                     System.exit(0); // exit gui when button is pressed on the 10th panel
                 }
 
+
+
                 // run only for the panels that print the questions
                 if (currentCard < 9)
                 {
-                    if (valid)
+                    if (valid) // ------------ checks if input is valid and runs code inside
                     {
-
-                        if (currentCard == 8)
+                        if (currentCard == 8)  // for panel 8 only (after all questions have been answered)
                         {
-                            nextButton.setText("Nice");
-                            instructionLabel.setVisible(false);
-                            inputField.setVisible(false);
+                            nextButton.setText("Nice"); // change button label 
+                            instructionLabel.setVisible(false); // remove the inputting instruction label
+                            inputField.setVisible(false); // remove textfield
                         }
 
 
@@ -494,41 +510,48 @@ public class GuiRpgCharacter extends JFrame{
                             System.out.println("exception oops for reading files");
                         }
 
+                        // call method to get eligible characters
+                        // pass user's input as parameters
                         getCharacters(storeChoice);
 
-                        currentCard += 1;
-                        invalidPan.setVisible(false);
+                        currentCard += 1; // flip to next panel card
+                        invalidPan.setVisible(false);  // don't show the invalid message when input is valid
                     }
-                    else
+                    
+                    else // ------------ if input is not valid
                     {
-                        if (firstPass)
+                        // when it flips to the second panel from the first, it will automatically consider the empty textfield as invalid input
+                        // this is to make sure that it doesn't show the invalid message immediately
+                        if (firstPass) 
                         {
-                            firstPass = false;
-                            cl.show(cardPanel, "" + currentCard);
+                            firstPass = false;  // deactivated for the rest of the program
+                            cl.show(cardPanel, "" + currentCard); // keep showing the first question 
                         }
-                        else
+                        else // if firstPass is already false and input is still invalid, show invalid message and don't flip to the next panel
                         {
                             invalidPan.setVisible(true);
                         }
                     }
 
-                    if (currentCard == 9)
-                    {
-                        java.util.List<Integer> sortTotals = new ArrayList<Integer>();
 
-                        for (String i : characterTotal.keySet())
+
+                    // * ------------- for panel 9 only (*** processing results ***) -------------- *
+
+                    if (currentCard == 9)  
+                    {
+                        java.util.List<Integer> sortTotals = new ArrayList<Integer>(); // create list to store the character totals (value)
+                        for (String i : characterTotal.keySet())  // iterate through characterTotal hashmap
                         {
-                            sortTotals.add(characterTotal.get(i));
+                            sortTotals.add(characterTotal.get(i));  // add each total to sortTotals
                         }
                         
 
-                        Integer[] arrayForTotals = sortTotals.toArray(new Integer [16]);
-
-                        for (int j = 1; j < arrayForTotals.length; j++)
+                        Integer[] arrayForTotals = sortTotals.toArray(new Integer [16]);  // create Integer array to convert sortTotals to array
+                        for (int j = 1; j < arrayForTotals.length; j++) // bubble sort
                         {
                             for (int i = 0; i < arrayForTotals.length - j; i++)
                             {
-                                if (arrayForTotals[i] < arrayForTotals[i+1])
+                                if (arrayForTotals[i] < arrayForTotals[i+1]) // sort from greatest total to least
                                 {
                                     Integer temp = arrayForTotals[i];
                                     arrayForTotals[i] = arrayForTotals[i+1];
@@ -538,118 +561,87 @@ public class GuiRpgCharacter extends JFrame{
                         }
 
                         
-                        Integer maxValue = arrayForTotals[0];
-
+                        Integer maxValue = arrayForTotals[0]; // get the greatest total; the first number in arrayForTotals 
+                        int countRecommended = 0;  // counter to count how many characters were recommended
                         for (String i : characterTotal.keySet()) 
                         {
-                            if (maxValue == (characterTotal.get(i)))
+                            if (maxValue == (characterTotal.get(i))) // if the max total equals a value in the characterTotal hashmap
                             {
-                                recommendedCharactersList.add(i);
-
-                                
+                                writer.println(i);   // get corresponding key (character) and write it to a new file  
+                                countRecommended++;   // keep count each time a character is added to file 
                             }
                         }
+                        writer.close();  // commit changes to file
 
-                        String[] recommendedCharactersArray = new String[recommendedCharactersList.size()];
-                        
-                        for (int i = 0; i < recommendedCharactersList.size(); i++)
+
+
+                        String[] recommendedCharactersArray = new String[countRecommended]; // create an array to store recommended characters after reading from file
+                        File getRecommended = new java.io.File("RPGcharacter" + File.separator + "Assets" + File.separator + "RecommendedCharacters.txt"); // file instance
+                        Scanner scanRecommended = null; // scanner for file 
+
+                        // use try and catch again to read from a file inside the action listener
+                        try 
                         {
-                            
-                            recommendedCharactersArray[i] = recommendedCharactersList.get(i) ;
-                        } 
+                            scanRecommended = new Scanner(getRecommended); // complete scanner for file
+                            while (scanRecommended.hasNext())
+                            {
+                                for (int i = 0; i < countRecommended; i++)
+                                {
+                                    recommendedCharactersArray[i] = scanRecommended.nextLine(); // add each line as an element in array
+                                }
+                            }
+                            scanRecommended.close();
+                        }
+                        catch (Exception e)
+                        {
+                            System.out.println("Exception oops for reading recommended characters file");
+                        }
+                        
+                        // convert recommendedCharactersArray to string in order to display it on gui
                         recommendedCharactersString = Arrays.toString(recommendedCharactersArray); 
-                        recommendedCharactersString = recommendedCharactersString.replace(",", "<br>");  //remove the commas
-                        recommendedCharactersString = recommendedCharactersString.replace("[", "");  //remove the right bracket
-                        recommendedCharactersString = recommendedCharactersString.replace("]", "");  //remove the left bracket
+                        recommendedCharactersString = recommendedCharactersString.replace(",", "<br>");  
+                        recommendedCharactersString = recommendedCharactersString.replace("[", "");  
+                        recommendedCharactersString = recommendedCharactersString.replace("]", "");  
                         recommendedCharactersString = "<html>" + recommendedCharactersString + "</html>";
 
-                        recommendedCharactersLabel.setText(recommendedCharactersString);
-                        recommendPan.setVisible(true);
+                        recommendedCharactersLabel.setText(recommendedCharactersString); // update the text of recommendedCharactersLabel
+                        recommendPan.setVisible(true);  // set visible
 
-                        getContentPane().add(recommendPan, BorderLayout.CENTER);
+                        getContentPane().add(recommendPan, BorderLayout.CENTER); // add the recommended characters panel as a container to the jframe 
                         
-
-
-
-
                     }
                 }
-                
-                
-                
 
-                // show the value of currentcard
+
+                // at the end of each button click, show the panel with the name equal to the currentCard value
                 cl.show(cardPanel, "" + currentCard);
-                
-
-                
+                    
             }
         });
 
- 
-       
- 
 
-
-        // used to get content pane
-        
-    
+        // place components (main panels) onto jframe to display
         getContentPane().add(invalidPan, BorderLayout.CENTER);
-
         getContentPane().add(cardPanel, BorderLayout.NORTH);
-
-        // used to get content pane
         getContentPane().add(buttonPanel, BorderLayout.SOUTH);
-
-        
-
-        
-
 
 
 
         initCharacters(); // call method for initialization
-
-        
-
     }
 
-
-
-    
-
-
-
-
-
-
-
-
  
-    // Main Method
+    // * -------------------- * Main method * --------------------- * //
     public static void main(String[] args) throws Exception
     {
+        // creating Object of GuiRpgCharacter class
+        GuiRpgCharacter frame = new GuiRpgCharacter(); // the class's name is its data type
 
-
- 
-        // Creating Object of GuiRpgCharacter class.
-        GuiRpgCharacter frame = new GuiRpgCharacter();
-
-        
- 
-        // Function to set default operation of JFrame.
+        // default; exit if 'x' button on gui is clicked
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
-        // Function to set visibility of JFrame.
+        // set frame as visible
         frame.setVisible(true);
-
-
-
-        
-        
-
-
-
         
     }
 }
